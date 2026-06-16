@@ -3,7 +3,6 @@
 #===============================================================================
 # yay-shield
 # Copyright (C) 2026 Muhammed Bekiroğlu
-# Copyright (C) 2026 Alshajara Computer Science Institute
 #
 # Author: Muhammed Bekiroğlu
 # Institution: Alshajara Computer Science Institute

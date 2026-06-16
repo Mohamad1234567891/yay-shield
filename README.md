@@ -210,8 +210,8 @@ Copyright (C) 2026 Alshajara Computer Science Institute
 Additional attribution notice under GPLv3 section 7(b):
 
 > yay-shield was originally created by Muhammed Bekiroğlu.
-> Original repository: https://original-repository.com
-> Author channel: https://youtube-channel.com
+> Original repository: https://github.com/Mohamad1234567891/yay-shield
+> Author channel: https://www.youtube.com/channel/UCn5v_KxsVgdbba4vk1CxjAA?sub_confirmation=1
 
 Redistributed copies and modified versions must preserve this reasonable author attribution in the source code, documentation, and other reasonable legal notices accompanying the work.
 
@@ -222,5 +222,5 @@ This attribution requirement does not limit, restrict, or otherwise modify the r
 Created by **Muhammed Bekiroğlu**
 Alshajara Computer Science Institute
 
-* Original repository: https://original-repository.com
-* Author channel: https://youtube-channel.com
+* Original repository: https://github.com/Mohamad1234567891/yay-shield
+* Author channel: https://www.youtube.com/channel/UCn5v_KxsVgdbba4vk1CxjAA?sub_confirmation=1

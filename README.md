@@ -13,17 +13,17 @@ A `LOW`, `MEDIUM`, or `HIGH` finding does **not** automatically mean that a pack
 In other words:
 
 * A finding means “review this carefully.”
-* A finding does **not** always mean “this package is malware.”
+* A finding does not always mean “this package is malware.”
 * Some legitimate packages may trigger warnings because they perform complex build steps.
-* Some risky patterns may be vulnerabilities or bad packaging practices rather than active compromise.
+* Some risky patterns may be vulnerabilities or unsafe packaging practices rather than active compromise.
 
 However, some results should be treated very seriously:
 
-* If `yay-shield` reports **one or more ****`CRITICAL`**** findings**, you should avoid installing the package unless you fully understand and trust the behavior.
+* If `yay-shield` reports one or more **`CRITICAL`** findings, you should avoid installing the package unless you fully understand and trust the behavior.
 * If the total risk score is **540 or higher**, you should avoid installing the package, even if no `CRITICAL` finding appears.
 * If there is a `CRITICAL` finding, you should avoid installing the package even if the risk score is below `540`.
 
-A `CRITICAL` finding or a very high risk score still does not mathematically prove that the package is compromised. It means the package contains behavior dangerous enough that installing it is not recommended.
+A `CRITICAL` finding or a very high risk score still does not mathematically prove that the package is compromised. It means the package contains behavior dangerous enough that installation is not recommended.
 
 ## What yay-shield Does
 
@@ -100,6 +100,8 @@ sudo pacman -S --needed python git curl pacman file coreutils yay shellcheck gnu
 Recommended manual installation:
 
 ```bash
+git clone https://github.com/YOUR-USERNAME/yay-shield.git
+cd yay-shield
 sudo install -m 755 yay-shield /usr/local/bin/yay-shield
 ```
 
@@ -200,5 +202,25 @@ For best results, use `yay-shield` together with normal security practices:
 
 ## License
 
-This project should include an open-source license before publication.
+`yay-shield` is licensed under the GNU General Public License version 3.
 
+Copyright (C) 2026 Muhammed Bekiroğlu
+Copyright (C) 2026 Alshajara Computer Science Institute
+
+Additional attribution notice under GPLv3 section 7(b):
+
+> yay-shield was originally created by Muhammed Bekiroğlu.
+> Original repository: https://original-repository.com
+> Author channel: https://youtube-channel.com
+
+Redistributed copies and modified versions must preserve this reasonable author attribution in the source code, documentation, and other reasonable legal notices accompanying the work.
+
+This attribution requirement does not limit, restrict, or otherwise modify the rights granted under the GNU General Public License version 3.
+
+## Author
+
+Created by **Muhammed Bekiroğlu**
+Alshajara Computer Science Institute
+
+* Original repository: https://original-repository.com
+* Author channel: https://youtube-channel.com

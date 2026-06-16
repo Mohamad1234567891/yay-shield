@@ -238,7 +238,7 @@ This attribution requirement does not limit, restrict, or otherwise modify the r
 ## Author
 
 Created by **Muhammed Bekiroğlu**
-Alshajara Computer Science Institute
+Founder of the Alshajara Computer Science Institute Youtube Channel
 
 * Original repository: https://github.com/Mohamad1234567891/yay-shield
 * Author channel: https://www.youtube.com/channel/UCn5v_KxsVgdbba4vk1CxjAA?sub_confirmation=1

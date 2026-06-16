@@ -6,24 +6,24 @@ Version 12 is the first official public open-source release of `yay-shield`. Ear
 
 ## Important: How to Read yay-shield Results
 
-`yay-shield` is a risk scanner, not a malware verdict engine.
+`yay-shield` is designed to help users make safer AUR installation decisions before package build scripts run on their system.
 
-A `LOW`, `MEDIUM`, or `HIGH` finding does **not** automatically mean that a package is malicious or compromised. It means that `yay-shield` found something in a scanned file, such as a `PKGBUILD`, `.install` script, Makefile, manifest, or build hook, that may be risky, unusual, fragile, or exploitable under certain conditions.
+Most `LOW`, `MEDIUM`, and `HIGH` findings do **not** mean that a package is compromised. They usually mean that `yay-shield` found risky, unusual, fragile, or poorly implemented behavior in a scanned file such as a `PKGBUILD`, `.install` script, Makefile, manifest, or build hook.
 
-In other words:
+In practical terms:
 
-* A finding means “review this carefully.”
-* A finding does not always mean “this package is malware.”
-* Some legitimate packages may trigger warnings because they perform complex build steps.
-* Some risky patterns may be vulnerabilities or unsafe packaging practices rather than active compromise.
+* If there are only `LOW`, `MEDIUM`, or `HIGH` findings, no `CRITICAL` findings, and the total risk score is below `540`, the package is usually still likely to be safe to install.
+* These findings often point to packaging mistakes, unsafe implementation choices, weak integrity practices, or patterns that could make the package easier to compromise.
+* If a `HIGH` finding appears, experienced users are encouraged to manually review the referenced file before installing.
+* Legitimate packages can trigger warnings when they use complex build logic, custom install hooks, or unusual upstream build systems.
 
-However, some results should be treated very seriously:
+Some results should be treated as serious stop signs:
 
-* If `yay-shield` reports one or more **`CRITICAL`** findings, you should avoid installing the package unless you fully understand and trust the behavior.
-* If the total risk score is **540 or higher**, you should avoid installing the package, even if no `CRITICAL` finding appears.
-* If there is a `CRITICAL` finding, you should avoid installing the package even if the risk score is below `540`.
+* If `yay-shield` reports one or more **`CRITICAL`** findings, installing the package is not recommended unless you fully understand and trust the behavior.
+* If the total risk score is **540 or higher**, installing the package is not recommended, even if no `CRITICAL` finding appears.
+* A `CRITICAL` finding or a risk score of `540+` means the package contains behavior that is highly abnormal, highly dangerous, or strongly consistent with compromise-style activity.
 
-A `CRITICAL` finding or a very high risk score still does not mathematically prove that the package is compromised. It means the package contains behavior dangerous enough that installation is not recommended.
+A `CRITICAL` finding does not mathematically prove that the package is compromised, but it is a strong warning that the package is too risky for normal installation. In that case, avoid installing it unless you know exactly what the package is doing and why.
 
 ## What yay-shield Does
 
@@ -52,6 +52,24 @@ It checks for:
 * Git hooks, suspicious executable files, symlink escapes, archive traversal, and path shadowing
 * Manifest-level supply-chain risks in npm, Cargo, Go, Python, Ruby, Gradle, Maven, CMake, Meson, and lockfiles
 * Downstream build-script behavior in `build.rs`, `setup.py`, `package.json`, Makefiles, CMake, Meson, and related files
+
+## Use by AUR Maintainers and Contributors
+
+`yay-shield` is also useful for AUR maintainers, package contributors, and experienced Arch users.
+
+A maintainer can run `yay-shield` against their own package to see which parts of the package may look risky to users, which install logic could be hardened, and which packaging choices may expose the package to compromise. This makes `yay-shield` useful not only as an install-time defense tool, but also as a package-quality and hardening tool.
+
+For maintainers, findings can help identify:
+
+* Weak or missing source integrity checks
+* Risky install script behavior
+* Unsafe build hooks
+* Suspicious command chains
+* Unnecessary network access during build
+* Dangerous file writes or permissions
+* Patterns that could make the package easier to compromise
+
+Even senior Arch users and AUR maintainers can use `yay-shield` as a second layer of review before trusting or publishing package changes.
 
 ## Version 12 Highlights
 
@@ -181,24 +199,24 @@ YSHIELD_WEAK_ADVISORIES=0
 
 ## Security Model
 
-`yay-shield` is a pre-installation risk scanner. It is not a perfect malware detector and does not claim to prove that a package is safe or unsafe.
+`yay-shield` is a pre-installation security review layer for AUR installs. It is built to detect dangerous installer behavior, risky packaging choices, weak supply-chain practices, and common compromise patterns before the package is installed.
 
-It is designed to:
+It is designed to help users:
 
-* Catch common malicious and suspicious AUR patterns
-* Expose risky package behavior before installation
-* Reduce the chance of blindly executing malicious PKGBUILDs
-* Give users clearer security context before trusting an AUR package
+* Avoid packages with highly dangerous install behavior
+* Detect suspicious or compromised-looking AUR build scripts before execution
+* Identify weak packaging practices that attackers could abuse
+* Prefer safer official repository packages when available
+* Make faster and better-informed decisions before trusting AUR packages
 
-It cannot guarantee safety against every possible attack, especially attacks hidden in large upstream source trees, compiled binaries, generated code, runtime behavior, or intentionally evasive build systems.
+`yay-shield` is especially useful because AUR packages execute build and install logic from user-maintained repositories. A malicious or compromised package can do serious damage if dangerous behavior is not noticed before installation.
 
-For best results, use `yay-shield` together with normal security practices:
+For best results, treat `yay-shield` as a strong pre-installation review tool:
 
-* Prefer official repository packages when available
-* Avoid unknown, abandoned, or newly submitted packages when possible
-* Prefer packages with pinned sources and valid checksums
-* Avoid running untrusted build scripts as your main user
-* Keep your system updated
+* `LOW`, `MEDIUM`, and `HIGH` findings usually mean “review this” rather than “do not install.”
+* One or more `CRITICAL` findings means installation is strongly discouraged.
+* A risk score of `540` or higher means installation is strongly discouraged, even without a `CRITICAL` finding.
+* Official repository alternatives are usually safer than AUR variants when they provide the same software.
 
 ## License
 

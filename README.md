@@ -102,7 +102,7 @@ Recommended manual installation:
 ```bash
 git clone https://github.com/Mohamad1234567891/yay-shield.git
 cd yay-shield
-sudo install -m 755 yay-shield /usr/local/bin/yay-shield
+sudo install -m 755 yay-shield.py /usr/local/bin/yay-shield
 ```
 
 Then verify:

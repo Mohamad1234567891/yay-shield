@@ -100,7 +100,7 @@ sudo pacman -S --needed python git curl pacman file coreutils yay shellcheck gnu
 Recommended manual installation:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/yay-shield.git
+git clone https://github.com/YOUR-USERNAME/yay-shield.git](https://github.com/Mohamad1234567891/yay-shield.git
 cd yay-shield
 sudo install -m 755 yay-shield /usr/local/bin/yay-shield
 ```
